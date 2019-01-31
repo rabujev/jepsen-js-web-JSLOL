@@ -25,14 +25,16 @@
       </header>
       <div class="content">
           <div class="ideas">
-            <h2 class="idea-name">Lobotomiser le monde</h2>
-            <div class="idea-description">Au moyen de la publicité</div>
+            <h2 class="idea-name"></h2>
+            <div class="idea-description"></div>
           </div>
-          <div class="ideas">
-            <h2 class="idea-name">Lobotomiser le monde</h2>
-            <div class="idea-description">Au moyen de la publicité</div>
-            <div class="details">au moyen de messages subliminaux...</div>
-            <div class="comments">cool</div>
+          <div class="modal-content">
+            <div class="ideas">
+              <h2 class="idea-name"></h2>
+              <div class="idea-description"></div>
+              <div class="details"></div>
+              <div class="comments"></div>
+            </div>            
           </div>
       </div>
     </div>
@@ -47,10 +49,7 @@
     }
 
     function storeIdea(idea) {
-      localStorage.setItem('name' + ideaCount, idea.name);
-      localStorage.setItem('description' + ideaCount, idea.description);
-      localStorage.setItem('details' + ideaCount, idea.details);
-      localStorage.setItem('comments' + ideaCount, JSON.stringify(idea.comments));
+      localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
       ideaCount++;
     }
 
@@ -76,7 +75,6 @@
         }],
       }
     ];
-    ideaGenerator(3);
     </script>
   </body>
 </html>
