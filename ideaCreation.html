@@ -17,29 +17,16 @@
   </head>
   <body>
     <div class="container">
-      <header>
-        <h1>BeCode / JavaScript for the Web</h1>
-        <h2>
-          <strong><i class="fas fa-arrow-right"></i> Insert exercise name here <i class="fas fa-arrow-left"></i></strong>
-        </h2>
-      </header>
-      <div class="content">
-          <div class="ideas">
-            <h2 class="idea-name"></h2>
-            <div class="idea-description"></div>
-          </div>
-          <div class="modal-content">
-            <div class="ideas">
-              <h2 class="idea-name"></h2>
-              <div class="idea-description"></div>
-              <div class="details"></div>
-              <div class="comments"></div>
-            </div>            
-          </div>
-      </div>
+      <form id="ideaform">
+        <p><input type="text" name="ideaname" class="ideaname" placeholder="Idea name"></p>
+        <p><input type="text" name="ideadescription" class="ideadescription" placeholder="short idea description"></p>
+        <textarea name="detaileddescription" class="detaileddescription" placeholder="detailed idea description"></textarea>
+      </form>
+      <input type="submit" name="submitIdea" id="submitIdea" value="Submit">
+
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./ideaCreation.js"></script>
     <script>
     let ideaCount = localStorage.getItem("ideaCount");
     if(ideaCount === null){
