@@ -19,7 +19,7 @@ function ideaGenerator(n){
     storeIdea(idea);
   }
 }
-
+//blabla
 const genericIdeas = [
   {
     name: "Lobotimisatino",
