@@ -24,13 +24,59 @@
         </h2>
       </header>
       <div class="content">
-        <p>
-          <i class="fas fa-arrow-right"></i> Insert content here. <i class="fas fa-arrow-left"></i>
-        </p>
+          <div class="ideas">
+            <h2 class="idea-name">Lobotomiser le monde</h2>
+            <div class="idea-description">Au moyen de la publicité</div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Lobotomiser le monde</h2>
+            <div class="idea-description">Au moyen de la publicité</div>
+            <div class="details">au moyen de messages subliminaux...</div>
+            <div class="comments">cool</div>
+          </div>
       </div>
     </div>
 
     <script src="./script.js"></script>
+    <script>
+    let ideaCount = localStorage.getItem("ideaCount");
+    if(ideaCount === null){
+      ideaCount = 0;
+    } else {
+      ideaCount = parseInt(ideaCount);
+    }
+
+    function storeIdea(idea) {
+      localStorage.setItem('name' + ideaCount, idea.name);
+      localStorage.setItem('description' + ideaCount, idea.description);
+      localStorage.setItem('details' + ideaCount, idea.details);
+      localStorage.setItem('comments' + ideaCount, JSON.stringify(idea.comments));
+      ideaCount++;
+    }
+
+    function ideaGenerator(n){
+      for(let i = 0; i < n; i++){
+        let idea = genericIdeas[i%genericIdeas.length];
+        storeIdea(idea);
+      }
+    }
+
+    const genericIdeas = [
+      {
+        name: "Lobotimisatino",
+        description: "Au moyen de la publicité",
+        details: "au moyen de messages subliminaux...",
+        comments: [{
+          author: "Ludivine",
+          text: "Cool",
+        }, {
+          auhor: "Samuel",
+          text: "J'ai mal au crâne, j'aimerais bien qu'on m'enlève mon cerveau. \
+          Quel bon produit le Lobotimisatino!",
+        }],
+      }
+    ];
+    ideaGenerator(3);
+    </script>
   </body>
 </html>
-
