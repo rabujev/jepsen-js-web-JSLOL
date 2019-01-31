@@ -29,7 +29,7 @@ const genericIdeas = [
       author: "Ludivine",
       text: "Cool",
     }, {
-      auhor: "Samuel",
+      author: "Samuel",
       text: "J'ai mal au crâne, j'aimerais bien qu'on m'enlève mon cerveau. \
       Quel bon produit le Lobotimisatino!",
     }],
