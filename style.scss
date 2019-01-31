@@ -8,3 +8,36 @@
   If you need some CSS for any reason you can put it here.
 */
 
+body {
+  background-color: #80372C;
+  background-image: url("image/body-img.jpg");
+  background-size: cover;
+}
+
+.ideas {
+  //border: 2px solid #000000;
+  padding: 15px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.content {
+  background: radial-gradient(ellipse, #24E8E1, #0D1740);
+  border-radius: 2.5em;
+  box-shadow: 10px 10px 0px #000000;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+.modal-content {
+  background-color: rgba(192, 192, 192, 1);
+}
+
+.modal-header {
+  text-shadow: 0;
+  text-align: center;
+  color: #000000;
+}
