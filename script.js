@@ -23,21 +23,18 @@ if(ideaCount === null){
 	ideaCount = parseInt(ideaCount);
 }
 
-let ideas = [];
+let ideas = JSON.parse(localStorage.getItem('ideas'));
+if (ideas === null){
+  ideas = [];
+}
 
 /*---------------
  * Idea-loading
  *---------------*/
 let content = document.querySelector('.content');
 
-for(let i = 0; i < ideaCount; i++){
-  let idea = JSON.parse(localStorage.getItem('idea' + i));
-  ideas.push(idea);
-
-  if(idea == null){
-    console.error(`idea${i} is null`);
-    return;
-  }
+for(let i = 0; i < ideas.length; i++){
+  let idea = ideas[i];
 
   let ideaNode = document.createElement('div');
   ideaNode.classList = 'idea';
@@ -91,6 +88,12 @@ function getDetails(ideaNumber){
     editDetails(ideaNumber);
   });
 
+  modalNode.querySelector(".delete-btn").addEventListener("click", () => {
+    deleteIdea(ideaNumber);
+  });
+
+
+
   $("#idea-detail-modal").modal("show");
 }
 
@@ -128,12 +131,12 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
 
 function storeIdea(idea, ideaNumber) {
   if(typeof ideaNumber === "undefined"){
-    localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
-    ideaCount++;
-    localStorage.setItem('ideaCount', ideaCount);   
+    ideas.push(idea);
   } else {
-    localStorage.setItem('idea' + ideaNumber, JSON.stringify(idea));
+    ideas[ideaNumber] = idea;
   }
+
+  localStorage.setItem('ideas', JSON.stringify(ideas));
 
 }
 
@@ -142,7 +145,7 @@ function storeIdea(idea, ideaNumber) {
  * Idea-edition
  *---------------*/
 
- function editDetails(ideaNumber){
+function editDetails(ideaNumber){
   let idea = ideas[ideaNumber];
 
   modalNode.innerHTML = creationModal.innerHTML;
@@ -161,7 +164,7 @@ function storeIdea(idea, ideaNumber) {
 
   let footer = modalNode.querySelector(".modal-footer");
   let closeButton = modalNode.querySelector("#close-modal");
-  
+
   editBtn.addEventListener("click", () => {
     let modif = {
       name: modalNode.querySelector('.idea-name').value,
@@ -176,7 +179,35 @@ function storeIdea(idea, ideaNumber) {
 
   footer.insertBefore(editBtn, closeButton);
 
+}
 
 
- }
+/*---------------
+ * Deleting idea
+ *---------------*/
+
+function deleteIdea(ideaNumber){
+  let idea = ideas[ideaNumber];
+
+  let confirmBtn = document.createElement("button");
+  confirmBtn.type="button";
+  confirmBtn.classList = "btn btn-primary";
+  confirmBtn.innerText = "Confirmer la suppression";
+
+  let footer = modalNode.querySelector(".modal-footer");
+  let closeButton = modalNode.querySelector(".close-modal");
+
+  confirmBtn.addEventListener("click", () => {
+    ideas.splice(ideaNumber,1);
+    localStorage.setItem('ideas', JSON.stringify(ideas));
+    window.location.reload();
+  });
+
+
+  footer.insertBefore(confirmBtn, closeButton);
+
+}
+
+
+
 
