@@ -120,16 +120,21 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
   ideaDescription.value = '';
   detailedDescription.value = '';
 
-  window.location.reload();
-
   storeIdea(userIdea);
+
+  window.location.reload();
 });
 
 
-function storeIdea(idea) {
- localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
- ideaCount++;
- localStorage.setItem('ideaCount', ideaCount);
+function storeIdea(idea, ideaNumber) {
+  if(typeof ideaNumber === "undefined"){
+    localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
+    ideaCount++;
+    localStorage.setItem('ideaCount', ideaCount);   
+  } else {
+    localStorage.setItem('idea' + ideaNumber, JSON.stringify(idea));
+  }
+
 }
 
 
@@ -156,7 +161,22 @@ function storeIdea(idea) {
 
   let footer = modalNode.querySelector(".modal-footer");
   let closeButton = modalNode.querySelector("#close-modal");
+  
+  editBtn.addEventListener("click", () => {
+    let modif = {
+      name: modalNode.querySelector('.idea-name').value,
+      description: modalNode.querySelector(".idea-description").value,
+      details: modalNode.querySelector(".detailed-description").value,
+      comments: idea.comments,
+    };
+
+    storeIdea(modif, ideaNumber);
+    window.location.reload();
+  });
+
   footer.insertBefore(editBtn, closeButton);
+
+
 
  }
 
