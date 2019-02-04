@@ -23,52 +23,73 @@ if(ideaCount === null){
 	ideaCount = parseInt(ideaCount);
 }
 
-let idea = JSON.parse(localStorage.getItem("idea0"));
+let ideas = [];
 
-if(idea == null)
-  idea = {name:'',description:'',details:'',comments:[]};
+/*---------------
+ * Idea-loading
+ *---------------*/
+let content = document.querySelector('.content');
 
-let ideasElt = document.querySelector(".ideas");
-ideasElt.querySelector(".idea-name").innerText = idea.name;
-ideasElt.querySelector(".idea-description").innerText = idea.description;
+for(let i = 0; i < ideaCount; i++){
+  let idea = JSON.parse(localStorage.getItem('idea' + i));
+  ideas.push(idea);
 
-let modalHead = document.querySelector(".modal-title");
-modalHead.innerText = idea.name;
+  if(idea == null){
+    console.error(`idea${i} is null`);
+    return;
+  }
 
-let modalElt = document.querySelector(".modal-content .ideas");
-modalElt.querySelector(".idea-description").innerText = idea.description;
-modalElt.querySelector(".details").innerText = idea.details;
+  let ideaNode = document.createElement('div');
+  ideaNode.classList = 'idea';
+  let name = document.createElement('h2');
+  name.classList = 'idea-name';
+  name.innerText = idea.name
+  ideaNode.appendChild(name);
+  let description = document.createElement('p');
+  description.classList = 'idea-description';
+  description.innerText = idea.description;
+  ideaNode.appendChild(description);
+  content.appendChild(ideaNode);
 
-let commentsElt = document.querySelector(".comments");
-let divCommentsElt;
-let divCommentAuthor;
-let divCommentText;
+  console.log(idea);
 
-console.log(idea);
-
-for(let i=0; i<idea.comments.length; i++){
-	//creation du div commentaire
-	divCommentsElt = document.createElement("div");
-	commentsElt.appendChild(divCommentsElt);
-
-	// creation du div nom d'auteur dans le div commentaire
-	divCommentAuthor = document.createElement("div");
-	divCommentAuthor.innerText= idea.comments[i].author;
-	divCommentsElt.appendChild(divCommentAuthor);
-
-	// creation du div texte dans le div commentaire
-	divCommentText = document.createElement("div");
-	divCommentText.innerText= idea.comments[i].text;
-	divCommentsElt.appendChild(divCommentText);
+  ideaNode.addEventListener("click", () => getDetails(i));
 }
 
-ideasElt.addEventListener("click", () => {
-  $("#exampleModalCenter").modal("show")
-});
+function getDetails(ideaNumber){
+  let idea = ideas[ideaNumber];
+
+  let modalNode = document.querySelector("#idea-detail-modal");
+  modalNode.querySelector('.modal-title').innerText = idea.name;
+  modalNode.querySelector(".idea-description").innerText = idea.description;
+  modalNode.querySelector(".details").innerText = idea.details;
+
+  let commentsNode = document.querySelector(".comments");
+  // Empty comments that might be left from previous one
+  commentsNode.innerText = '';
+  for(let i = 0; i < idea.comments.length; i++){
+  	//creation du div commentaire
+  	let comment = document.createElement("div");
+
+  	// creation du div nom d'auteur dans le div commentaire
+  	let author = document.createElement("div");
+  	author.innerText = idea.comments[i].author;
+  	comment.appendChild(author);
+
+  	// creation du div texte dans le div commentaire
+  	let commentText = document.createElement("div");
+  	commentText.innerText= idea.comments[i].text;
+  	comment.appendChild(commentText);
+
+    commentsNode.appendChild(comment);
+  }
+
+  $("#idea-detail-modal").modal("show");
+}
 
 /*---------------
  * Idea-creation
- $---------------*/
+ *---------------*/
 
 document.querySelector('.idea-creation').addEventListener('click', () => {
   $('#idea-creation-modal').modal('show');
