@@ -16,6 +16,7 @@
 
   </head>
   <body>
+    <img src="image/body-img.jpg" alt="background">
     <div class="container">
       <header>
         <h1>BeCode / JavaScript for the Web</h1>
@@ -24,17 +25,54 @@
         </h2>
       </header>
       <div class="content">
+          <div id="addIdea">
+            <button type="button" name="Ajout">Ajouter une idée pour conquérir le monde</button>
+          </div>
           <div class="ideas">
             <h2 class="idea-name"></h2>
             <div class="idea-description"></div>
           </div>
 
-
           <div class="ideas">
             <h2 class="idea-name">Décapitation</h2>
             <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
           </div>
-
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
+          <div class="ideas">
+            <h2 class="idea-name">Décapitation</h2>
+            <div class="idea-description"><p>Garde la tête sur les épaules</p></div>
+          </div>
           <div class="ideas">
             <h2 class="idea-name">Castration</h2>
             <div class="idea-description"><p>Plus de bébés</p></div>
@@ -45,9 +83,6 @@
             <div class="idea-description"><p>Bruler les hérétique</p></div>
           </div>
 
-          <div id="addIdea">
-            <button type="button" name="Ajout">Ajouter une idée pour conquérir le monde</button>
-          </div>
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -59,13 +94,16 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <div class="ideas">
+                  <div class="ideasmodal">
                     <div class="idea-description"></div>
                     <div class="details"></div>
                     <div class="comments"></div>
                   </div>
                 </div>
                 <div class="modal-footer">
+                  <div id="addAndDelButtons"><button type="button" id="buttonAdd" class="btn btn-secondary" data-dismiss="modal"></button>
+                  <button type="button" id="buttonDelete" class="btn btn-secondary" data-dismiss="modal"></button>
+                </div>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>

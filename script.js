@@ -32,7 +32,7 @@ ideasElt.querySelector(".idea-description").innerText = idea.description;
 let modalHead = document.querySelector(".modal-title");
 modalHead.innerText = idea.name;
 
-let modalElt = document.querySelector(".modal-content .ideas");
+let modalElt = document.querySelector(".modal-content .ideasmodal");
 modalElt.querySelector(".idea-description").innerText = idea.description;
 modalElt.querySelector(".details").innerText = idea.details;
 
