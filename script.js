@@ -36,7 +36,13 @@ modalHead.style.fontSize = "2rem";
 let modalElt = document.querySelector(".modal-content .ideasmodal");
 modalElt.querySelector(".idea-description").innerText = idea.description;
 modalElt.querySelector(".details").innerText = idea.details;
-//modalElt.querySelector(".comments").innerText = idea.author
+
+
+let descriptionElt = document.querySelector(".title-description .idea-description");
+descriptionElt.style.marginBottom = "1rem";
+
+let detailElt = document.querySelector(".title-details .details");
+detailElt.style.marginBottom = "1rem";
 
 let commentsElt = document.querySelector(".comments");
 let divCommentsElt;
@@ -57,6 +63,7 @@ for(let i=0; i<idea.comments.length; i++){
 	divCommentAuthor.style.color = "#156777";
 	divCommentAuthor.style.fontSize = "18px";
 	divCommentAuthor.style.textDecoration = "underline";
+	divCommentAuthor.style.paddingTop = "1rem";
 
 
 	// creation du div texte dans le div commentaire
