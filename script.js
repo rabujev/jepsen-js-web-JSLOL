@@ -45,19 +45,29 @@ for(let i = 0; i < ideas.length; i++){
 
   console.log(idea);
 
-  ideaNode.addEventListener("click", () => getDetails(i));
+  ideaNode.addEventListener("click", () =>  {
+    loadDetails(i)
+    $("#idea-detail-modal").modal("show");
+  });
 }
 
-let modalNode = document.querySelector("#idea-detail-modal");
-let detailsHTML = modalNode.innerHTML;
+let detailsModal = document.querySelector("#idea-detail-modal");
+let detailsHTML = detailsModal.innerHTML;
 
-function getDetails(ideaNumber){
+function loadDetails(ideaNumber){
   let idea = ideas[ideaNumber];
-  modalNode.innerHTML = detailsHTML;
+  detailsModal.innerHTML = detailsHTML;
 
-  modalNode.querySelector('.modal-title').innerText = idea.name;
-  modalNode.querySelector(".idea-description").innerHTML = markdown.toHTML(idea.description);
-  modalNode.querySelector(".details").innerHTML = markdown.toHTML(idea.details);
+  detailsModal.querySelector('.modal-title').innerText = idea.name;
+  detailsModal.querySelector(".idea-description").innerHTML = markdown.toHTML(idea.description);
+  detailsModal.querySelector(".details").innerHTML = markdown.toHTML(idea.details);
+
+  console.log(detailsModal.querySelector('.add-comment'));
+
+  detailsModal.querySelector('.add-comment').addEventListener('click', () => {
+    addComment(ideaNumber);
+  });
+
 
   let commentsNode = document.querySelector(".comments");
   // Empty comments that might be left from previous one
@@ -79,17 +89,13 @@ function getDetails(ideaNumber){
     commentsNode.appendChild(comment);
   }
 
-  modalNode.querySelector(".edit-btn").addEventListener("click", () => {
+  detailsModal.querySelector(".edit-btn").addEventListener("click", () => {
     editDetails(ideaNumber);
   });
 
-  modalNode.querySelector(".delete-btn").addEventListener("click", () => {
+  detailsModal.querySelector(".delete-btn").addEventListener("click", () => {
     deleteIdea(ideaNumber);
   });
-
-
-
-  $("#idea-detail-modal").modal("show");
 }
 
 /*---------------
@@ -143,28 +149,28 @@ function storeIdea(idea, ideaNumber) {
 function editDetails(ideaNumber){
   let idea = ideas[ideaNumber];
 
-  modalNode.innerHTML = creationModal.innerHTML;
+  detailsModal.innerHTML = creationModal.innerHTML;
 
-  modalNode.querySelector('.idea-name').value = idea.name;
-  modalNode.querySelector(".idea-description").value = idea.description;
-  modalNode.querySelector(".detailed-description").value = idea.details;
+  detailsModal.querySelector('.idea-name').value = idea.name;
+  detailsModal.querySelector(".idea-description").value = idea.description;
+  detailsModal.querySelector(".detailed-description").value = idea.details;
 
 
-  modalNode.querySelector("#submit-idea").remove();
+  detailsModal.querySelector("#submit-idea").remove();
 
   let editBtn = document.createElement("button");
   editBtn.type="button";
   editBtn.classList = "btn btn-primary";
   editBtn.innerText = "Modifier";
 
-  let footer = modalNode.querySelector(".modal-footer");
-  let closeButton = modalNode.querySelector("#close-modal");
+  let footer = detailsModal.querySelector(".modal-footer");
+  let closeButton = detailsModal.querySelector("#close-modal");
 
   editBtn.addEventListener("click", () => {
     let modif = {
-      name: modalNode.querySelector('.idea-name').value,
-      description: modalNode.querySelector(".idea-description").value,
-      details: modalNode.querySelector(".detailed-description").value,
+      name: detailsModal.querySelector('.idea-name').value,
+      description: detailsModal.querySelector(".idea-description").value,
+      details: detailsModal.querySelector(".detailed-description").value,
       comments: idea.comments,
     };
 
@@ -189,8 +195,8 @@ function deleteIdea(ideaNumber){
   confirmBtn.classList = "btn btn-primary";
   confirmBtn.innerText = "Confirmer la suppression";
 
-  let footer = modalNode.querySelector(".modal-footer");
-  let closeButton = modalNode.querySelector(".close-modal");
+  let footer = detailsModal.querySelector(".modal-footer");
+  let closeButton = detailsModal.querySelector(".close-modal");
 
   confirmBtn.addEventListener("click", () => {
     ideas.splice(ideaNumber,1);
@@ -198,7 +204,25 @@ function deleteIdea(ideaNumber){
     window.location.reload();
   });
 
-
   footer.insertBefore(confirmBtn, closeButton);
-
 }
+
+
+/*---------------
+ * Deleting idea
+ *---------------*/
+
+ function addComment(ideaNumber){
+   console.log('Called addComment');
+   let idea = ideas[ideaNumber];
+   console.log(idea);
+
+   let comment = {
+     author: detailsModal.querySelector('.author').value,
+     text: detailsModal.querySelector('.comment-text').value,
+   }
+
+   idea.comments.push(comment);
+   localStorage.setItem('ideas', JSON.stringify(ideas));
+   loadDetails(ideaNumber);
+ }
