@@ -25,6 +25,9 @@ if(ideaCount === null){
 
 let idea = JSON.parse(localStorage.getItem("idea0"));
 
+if(idea == null)
+  idea = {name:'',description:'',details:'',comments:[]};
+
 let ideasElt = document.querySelector(".ideas");
 ideasElt.querySelector(".idea-name").innerText = idea.name;
 ideasElt.querySelector(".idea-description").innerText = idea.description;
@@ -74,22 +77,24 @@ document.querySelector('.idea-creation').addEventListener('click', () => {
 let creationModal = document.querySelector('#idea-creation-modal');
 
 creationModal.querySelector("#submit-idea").addEventListener('click', () => {
- let ideaName = creationModal.querySelector('.idea-name');
- let ideaDescription = creationModal.querySelector('.idea-description');
- let detailedDescription = creationModal.querySelector('.detailed-description');
+  let ideaName = creationModal.querySelector('.idea-name');
+  let ideaDescription = creationModal.querySelector('.idea-description');
+  let detailedDescription = creationModal.querySelector('.detailed-description');
 
- let userIdea = {
-   name: ideaName.value,
-   description: ideaDescription.value,
-   details: detailedDescription.value,
-   comments: [],
- };
+  let userIdea = {
+    name: ideaName.value,
+    description: ideaDescription.value,
+    details: detailedDescription.value,
+    comments: [],
+  };
 
   ideaName.value = '';
   ideaDescription.value = '';
   detailedDescription.value = '';
 
- storeIdea(userIdea);
+  window.location.reload();
+
+  storeIdea(userIdea);
 });
 
 
