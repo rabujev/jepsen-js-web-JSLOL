@@ -1,6 +1,8 @@
 
 // import some polyfill to ensure everything works OK
-import "babel-polyfill"
+import "babel-polyfill";
+
+const markdown = require('markdown').markdown;
 
 //import JQuery
 import $ from "jquery";
@@ -15,13 +17,6 @@ import "./style.scss";
 /*
   Put the JavaScript code you want below.
 */
-
-let ideaCount = localStorage.getItem("ideaCount");
-if(ideaCount === null){
-	ideaCount = 0;
-} else {
-	ideaCount = parseInt(ideaCount);
-}
 
 let ideas = JSON.parse(localStorage.getItem('ideas'));
 if (ideas === null){
@@ -44,7 +39,7 @@ for(let i = 0; i < ideas.length; i++){
   ideaNode.appendChild(name);
   let description = document.createElement('p');
   description.classList = 'idea-description';
-  description.innerText = idea.description;
+  description.innerHTML = markdown.toHTML(idea.description);
   ideaNode.appendChild(description);
   content.appendChild(ideaNode);
 
@@ -59,10 +54,10 @@ let detailsHTML = modalNode.innerHTML;
 function getDetails(ideaNumber){
   let idea = ideas[ideaNumber];
   modalNode.innerHTML = detailsHTML;
-  
+
   modalNode.querySelector('.modal-title').innerText = idea.name;
-  modalNode.querySelector(".idea-description").innerText = idea.description;
-  modalNode.querySelector(".details").innerText = idea.details;
+  modalNode.querySelector(".idea-description").innerHTML = markdown.toHTML(idea.description);
+  modalNode.querySelector(".details").innerHTML = markdown.toHTML(idea.details);
 
   let commentsNode = document.querySelector(".comments");
   // Empty comments that might be left from previous one
@@ -78,7 +73,7 @@ function getDetails(ideaNumber){
 
   	// creation du div texte dans le div commentaire
   	let commentText = document.createElement("div");
-  	commentText.innerText= idea.comments[i].text;
+  	commentText.innerHTML = markdown.toHTML(idea.comments[i].text);
   	comment.appendChild(commentText);
 
     commentsNode.appendChild(comment);
@@ -207,7 +202,3 @@ function deleteIdea(ideaNumber){
   footer.insertBefore(confirmBtn, closeButton);
 
 }
-
-
-
-
