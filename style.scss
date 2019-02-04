@@ -66,22 +66,24 @@ button {
   color: #FFFFFF;
 }
 
-#buttonAdd {
+.buttonAdd {
   background: url(/image/Plume.png) no-repeat 12px;
   background-size: contain;
   height: 2.5rem;
   width: 4rem;
 }
 
-#buttonDelete {
+.buttonDelete {
   background: url(/image/trash.png) no-repeat 12px;
   background-size: contain;
   height: 2.5rem;
   width: 4rem;
 }
-#addAndDelButtons {
+
+.modal-footer .addAndDelButtons {
   margin-right: 250px;
 }
+
 .modal-content {
   background-color: rgba(192, 192, 192, 1);
 }

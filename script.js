@@ -31,10 +31,12 @@ ideasElt.querySelector(".idea-description").innerText = idea.description;
 
 let modalHead = document.querySelector(".modal-title");
 modalHead.innerText = idea.name;
+modalHead.style.fontSize = "2rem";
 
 let modalElt = document.querySelector(".modal-content .ideasmodal");
 modalElt.querySelector(".idea-description").innerText = idea.description;
 modalElt.querySelector(".details").innerText = idea.details;
+//modalElt.querySelector(".comments").innerText = idea.author
 
 let commentsElt = document.querySelector(".comments");
 let divCommentsElt;
@@ -50,13 +52,20 @@ for(let i=0; i<idea.comments.length; i++){
 
 	// creation du div nom d'auteur dans le div commentaire
 	divCommentAuthor = document.createElement("div");
-	divCommentAuthor.innerText= idea.comments[i].author;
+	divCommentAuthor.innerText= "Auteur: " + idea.comments[i].author;
 	divCommentsElt.appendChild(divCommentAuthor);
+	divCommentAuthor.style.color = "#156777";
+	divCommentAuthor.style.fontSize = "18px";
+	divCommentAuthor.style.textDecoration = "underline";
+
 
 	// creation du div texte dans le div commentaire
 	divCommentText = document.createElement("div");
 	divCommentText.innerText= idea.comments[i].text;
 	divCommentsElt.appendChild(divCommentText);
+	divCommentText.style.backgroundColor = "#E1DADA";
+	divCommentText.style.padding = "1rem";
+	divCommentText.style.borderRadius = "1rem";
 }
 
 ideasElt.addEventListener("click", () => $("#exampleModalCenter").modal("show"));
