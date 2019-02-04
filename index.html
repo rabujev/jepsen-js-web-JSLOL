@@ -24,34 +24,60 @@
         </h2>
       </header>
       <div class="content">
-          <div class="ideas">
-            <h2 class="idea-name"></h2>
-            <div class="idea-description"></div>
-          </div>
+        <div class="ideas">
+          <h2 class="idea-name"></h2>
+          <div class="idea-description"></div>
+        </div>
+        <div class="idea-creation" style="background-color: dimgray; font-size: 10rem;">
+          <p>+</p>
+        </div>
 
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+        <!-- Modal details -->
+        <div class="modal fade" id="exampleModalCenter">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="ideas">
+                  <div class="idea-description"></div>
+                  <div class="details"></div>
+                  <div class="comments"></div>
                 </div>
-                <div class="modal-body">
-                  <div class="ideas">
-                    <div class="idea-description"></div>
-                    <div class="details"></div>
-                    <div class="comments"></div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Modal creation -->
+        <div class="modal fade" id="idea-creation-modal">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <input type="text" class="idea-name" placeholder="Idea name">
+                <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <input type="text" class="idea-description" placeholder="Short idea description">
+                  <textarea class="detailed-description" placeholder="Detailed idea description"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submit-idea" data-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -65,14 +91,16 @@
     }
 
     function storeIdea(idea) {
-      localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
-      ideaCount++;
+     localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
+     ideaCount++;
+     localStorage.setItem('ideaCount', ideaCount);
     }
 
     function ideaGenerator(n){
       for(let i = 0; i < n; i++){
         let idea = genericIdeas[i%genericIdeas.length];
         storeIdea(idea);
+
       }
     }
 
@@ -91,6 +119,18 @@
         }],
       }
     ];
+
+    function readAllIdeas(){
+      let ideaCount = localStorage.getItem("ideaCount");
+      if(ideaCount === null){
+        ideaCount = 0;
+      } else {
+        ideaCount = parseInt(ideaCount);
+      }
+      for(let i = 0; i < ideaCount; i++){
+        console.log(JSON.parse(localStorage.getItem('idea' + i)));
+      }
+    }
     </script>
   </body>
 </html>

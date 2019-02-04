@@ -59,4 +59,42 @@ for(let i=0; i<idea.comments.length; i++){
 	divCommentsElt.appendChild(divCommentText);
 }
 
-ideasElt.addEventListener("click", () => $("#exampleModalCenter").modal("show"));
+ideasElt.addEventListener("click", () => {
+  $("#exampleModalCenter").modal("show")
+});
+
+/*---------------
+ * Idea-creation
+ $---------------*/
+
+document.querySelector('.idea-creation').addEventListener('click', () => {
+  $('#idea-creation-modal').modal('show');
+});
+
+let creationModal = document.querySelector('#idea-creation-modal');
+
+creationModal.querySelector("#submit-idea").addEventListener('click', () => {
+ let ideaName = creationModal.querySelector('.idea-name');
+ let ideaDescription = creationModal.querySelector('.idea-description');
+ let detailedDescription = creationModal.querySelector('.detailed-description');
+
+ let userIdea = {
+   name: ideaName.value,
+   description: ideaDescription.value,
+   details: detailedDescription.value,
+   comments: [],
+ };
+
+  ideaName.value = '';
+  ideaDescription.value = '';
+  detailedDescription.value = '';
+
+ storeIdea(userIdea);
+});
+
+
+function storeIdea(idea) {
+ localStorage.setItem('idea' + ideaCount, JSON.stringify(idea));
+ ideaCount++;
+ localStorage.setItem('ideaCount', ideaCount);
+}
