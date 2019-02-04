@@ -56,10 +56,13 @@ for(let i = 0; i < ideaCount; i++){
   ideaNode.addEventListener("click", () => getDetails(i));
 }
 
+let modalNode = document.querySelector("#idea-detail-modal");
+let detailsHTML = modalNode.innerHTML;
+
 function getDetails(ideaNumber){
   let idea = ideas[ideaNumber];
-
-  let modalNode = document.querySelector("#idea-detail-modal");
+  modalNode.innerHTML = detailsHTML;
+  
   modalNode.querySelector('.modal-title').innerText = idea.name;
   modalNode.querySelector(".idea-description").innerText = idea.description;
   modalNode.querySelector(".details").innerText = idea.details;
@@ -83,6 +86,10 @@ function getDetails(ideaNumber){
 
     commentsNode.appendChild(comment);
   }
+
+  modalNode.querySelector(".edit-btn").addEventListener("click", () => {
+    editDetails(ideaNumber);
+  });
 
   $("#idea-detail-modal").modal("show");
 }
@@ -124,3 +131,32 @@ function storeIdea(idea) {
  ideaCount++;
  localStorage.setItem('ideaCount', ideaCount);
 }
+
+
+/*---------------
+ * Idea-edition
+ *---------------*/
+
+ function editDetails(ideaNumber){
+  let idea = ideas[ideaNumber];
+
+  modalNode.innerHTML = creationModal.innerHTML;
+
+  modalNode.querySelector('.idea-name').value = idea.name;
+  modalNode.querySelector(".idea-description").value = idea.description;
+  modalNode.querySelector(".detailed-description").value = idea.details;
+
+
+  modalNode.querySelector("#submit-idea").remove();
+
+  let editBtn = document.createElement("button");
+  editBtn.type="button";
+  editBtn.classList = "btn btn-primary";
+  editBtn.innerText = "Modifier";
+
+  let footer = modalNode.querySelector(".modal-footer");
+  let closeButton = modalNode.querySelector("#close-modal");
+  footer.insertBefore(editBtn, closeButton);
+
+ }
+
