@@ -70,20 +70,22 @@ function loadDetails(ideaNumber){
 
 
   let commentsNode = document.querySelector(".comments");
-  // Empty comments that might be left from previous one
-  commentsNode.innerText = '';
+
   for(let i = 0; i < idea.comments.length; i++){
   	//creation du div commentaire
   	let comment = document.createElement("div");
+    comment.classList = "comment";
 
   	// creation du div nom d'auteur dans le div commentaire
   	let author = document.createElement("div");
   	author.innerText = idea.comments[i].author;
+    author.classList = "comment-author";
   	comment.appendChild(author);
 
   	// creation du div texte dans le div commentaire
   	let commentText = document.createElement("div");
   	commentText.innerHTML = markdown.toHTML(idea.comments[i].text);
+    commentText.classList = "comment-content";
   	comment.appendChild(commentText);
 
     commentsNode.appendChild(comment);

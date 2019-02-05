@@ -16,19 +16,20 @@
 
   </head>
   <body>
+    <img src="image/body-img.jpg" alt="background">
     <div class="container">
       <header>
         <h1>BeCode / JavaScript for the Web</h1>
         <h2>
-          <strong><i class="fas fa-arrow-right"></i> Insert exercise name here <i class="fas fa-arrow-left"></i></strong>
+          <strong><i class="fas fa-arrow-right"></i><img src="/image/Logo_JSLOL.png" width="75px" height="75px"><i class="fas fa-arrow-left"></i></strong>
         </h2>
       </header>
       <div class="content">
 
         <!-- Idea creation button -->
-        <div class="idea-creation" style="background-color: dimgray; font-size: 10rem;">
-          <p>+</p>
-        </div>
+        <button type="button" class="idea-creation">
+          Ajouter une idée
+        </button>
 
         <!-- Modal details -->
         <div class="modal fade" id="idea-detail-modal">
@@ -41,11 +42,9 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="idea">
+                <div class="idea-modal">
                   <div class="idea-description"></div>
                   <div class="details"></div>
-                  <button class="edit-btn">Modifier</button>
-                  <button class="delete-btn">Supprimer</button>
                   <div class="comment-creation">
                     <input type="text" placeholder="Author name" class="author">
                     <textarea class="comment-text"></textarea>
@@ -55,6 +54,8 @@
                 </div>
               </div>
               <div class="modal-footer">
+                <button class="edit-btn"></button>
+                <button class="delete-btn"></button>
                 <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -67,7 +68,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <input type="text" class="idea-name" placeholder="Idea name">
-                <button type="button" class="close" data-dismiss="modal">
+                <button type="button" class="close" data-dismiss="modal" tabindex="-1">
                   <span>&times;</span>
                 </button>
               </div>
@@ -111,7 +112,7 @@
 
     const genericIdeas = [
       {
-        name: "Lobotimisatino",
+        name: "Lobotomisation",
         description: "Au moyen de la publicité",
         details: "au moyen de messages subliminaux...",
         comments: [{
