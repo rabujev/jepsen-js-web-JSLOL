@@ -10,23 +10,9 @@ Good conquest of the hearth, and may the odds be not in your favor.
 *We use a Becode template for this exercise that we have modified at our convenience*  
 *What you see below is rather for the developer*  
 
-## Becode Template for JavaScript Exercises
+# JavaScript Idea manager  
 
-Hello ! This is a simple template to use in Becode's JavaScript exercises.
-
-## Starting a new project from this template
-
-```bash
-sudo npm install -g download-git-repo-cli
-download-git-repo github:becodeorg/becode-js-web-template <your project name>
-cd <your project name>
-git init
-git add .
-git commit -m "Initial commit"
-npm install
-```
-
-Then setup a new repository on Github and publish this first version.
+This is a simple webapp used to manage ideas to conquer the world  
 
 ## Usage guide
 
@@ -64,9 +50,9 @@ As long as your project as been properly configured to enable Github Pages on th
 
 ## Files
 
-* [index.html](./index.html): The HTML file. Don't forget to modify the title of the exercise !
-* [style.scss](./style.scss): A [SCSS](https://sass-lang.com/) file that will automatically be compiled to CSS to be loaded by the HTML file. Useful if you want to add some custom CSS.
-* [script.js](./script.js): A JavaScript file that is loaded by the HTML file. Modify this for every exercise.
+* [index.html](./index.html): The HTML file. Contains the web page of the webapp, where you can add new idea
+* [style.scss](./style.scss): A [SCSS](https://sass-lang.com/) file that will automatically be compiled to CSS to be loaded by the HTML file. It take cares of the layout, style and so on.
+* [script.js](./script.js): the core of the functionnality you see on the webapp.
 
 ## Integrated libraries
 
@@ -74,3 +60,12 @@ This template already integrate some libraries and tools:
 
 * [Bootstrap](https://getbootstrap.com/): A CSS framework containing a lot of useful components, both in CSS and JavaScript. This template uses the [Litera](https://bootswatch.com/litera/) Bootstrap template.
 * [Font Awesome](https://fontawesome.com/): A library of icons that we can use to display nice little icons everywhere. There are even cats in it :smiley_cat: !
+* [Markdown](https://www.npmjs.com/package/markdown): A library that is used to convert Markdon into Html  
+And other dependencies (like JQuery for Bootstrap) You can find them in the package.json.
+
+## Last word  
+This project, was our first group project, we are Junior web developer, so be tolerant, we did our best and we liked the result
+of it. Don't hesitate to feedback us, like that, we could know where we need to improve our skills.
+Enjoy it, and give us your evilest idea to conquer this world.
+
+From the mightiest JS-LOL
