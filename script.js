@@ -64,17 +64,28 @@ function loadDetails(ideaNumber){
 
   console.log(detailsModal.querySelector('.add-comment'));
 
-//TEST ACTIVATION BOUTON COMMENTAIRE
   let commentWindow = document.querySelector(".comment-creation");
   let commentBtn = commentWindow.querySelector("button");
   commentWindow.querySelector(".author").addEventListener("input", ()=>{
-    if(commentWindow.querySelector(".author").value !== ""){
-      if(commentWindow.querySelector(".comment-text").value !== ""){
-        commentBtn.disabled = false;
-      }
+    if(commentWindow.querySelector(".author").value === "" ||
+       commentWindow.querySelector(".comment-text").value === "")
+    {
+      commentBtn.disabled = true;
+    } else {
+      commentBtn.disabled = false;
     }
   });
-//FIN TEST ACTIVATION BOUTON COMMENTAIRE
+
+    commentWindow.querySelector(".comment-text").addEventListener("input", ()=>{
+    console.log("event lancé");
+    if(commentWindow.querySelector(".author").value === "" ||
+       commentWindow.querySelector(".comment-text").value === "")
+    {
+      commentBtn.disabled = true;
+    } else {
+      commentBtn.disabled = false;
+    }
+  });
 
   detailsModal.querySelector('.add-comment').addEventListener('click', () => {
     addComment(ideaNumber);
@@ -137,6 +148,8 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
   ideaName.value = '';
   ideaDescription.value = '';
   detailedDescription.value = '';
+
+
 
   storeIdea(userIdea);
 
