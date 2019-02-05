@@ -9,7 +9,7 @@ Good conquest of the hearth, and may the odds be not in your favor.
 **See below for technical questions**  
 *We use a Becode template for this exercise that we have modified at our convenience*  
 
-# Becode Template for JavaScript Exercises
+## Becode Template for JavaScript Exercises
 
 Hello ! This is a simple template to use in Becode's JavaScript exercises.
 
