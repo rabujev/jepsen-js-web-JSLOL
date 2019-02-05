@@ -148,9 +148,6 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
   ideaName.value = '';
   ideaDescription.value = '';
   detailedDescription.value = '';
-
-
-
   storeIdea(userIdea);
 
   window.location.reload();
@@ -257,4 +254,24 @@ function deleteIdea(ideaNumber){
    idea.comments.push(comment);
    localStorage.setItem('ideas', JSON.stringify(ideas));
    loadDetails(ideaNumber);
+ }
+ //
+ let ideaWindow = document.getElementById("idea-creation-modal");
+ let ideaBtn = ideaWindow.querySelector("#submit-idea");
+
+// Enlever le disable button idea create
+ ideaWindow.querySelector(".idea-name").addEventListener("input", updateSubmitButtonState);
+ ideaWindow.querySelector(".detailed-description").addEventListener("input", updateSubmitButtonState);
+ ideaWindow.querySelector(".idea-description").addEventListener("input", updateSubmitButtonState);
+
+ function updateSubmitButtonState(){
+   console.log("Event lancé");
+   if(ideaWindow.querySelector(".idea-name").value === "" ||
+      ideaWindow.querySelector(".detailed-description").value === "" ||
+      ideaWindow.querySelector(".idea-description").value === "")
+   {
+     ideaBtn.disabled = true;
+   } else {
+     ideaBtn.disabled = false;
+   }
  }
