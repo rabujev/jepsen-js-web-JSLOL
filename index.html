@@ -20,17 +20,13 @@
     <div class="container">
       <header>
         <h1>BeCode / JavaScript for the Web</h1>
-        <h2>
-          <strong><i class="fas fa-arrow-right"></i><img src="/image/Logo_JSLOL.png" width="75px" height="75px"><i class="fas fa-arrow-left"></i></strong>
-        </h2>
+        <img src="/image/Logo_JSLOL.png" class="logo" width="75px" height="75px">
       </header>
       <div class="content">
-
         <!-- Idea creation button -->
-        <button type="button" class="idea-creation">
+        <button type="button" class="btn btn-primary idea-creation">
           Ajouter une idée
         </button>
-
         <!-- Modal details -->
         <div class="modal fade" id="idea-detail-modal">
           <div class="modal-dialog modal-dialog-centered">
@@ -48,7 +44,7 @@
                   <div class="comment-creation">
                     <input type="text" placeholder="Author name" class="author">
                     <textarea class="comment-text"></textarea>
-                    <button type="button" class="add-comment">Commenter</button>
+                    <button type="button" class="btn btn-primary add-comment" disabled>Commenter</button>
                   </div>
                   <div class="comments"></div>
                 </div>
@@ -56,6 +52,7 @@
               <div class="modal-footer">
                 <button class="edit-btn"></button>
                 <button class="delete-btn"></button>
+                <div class="invisible"></div>
                 <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
               </div>
             </div>

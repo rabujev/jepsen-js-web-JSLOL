@@ -64,6 +64,18 @@ function loadDetails(ideaNumber){
 
   console.log(detailsModal.querySelector('.add-comment'));
 
+//TEST ACTIVATION BOUTON COMMENTAIRE
+  let commentWindow = document.querySelector(".comment-creation");
+  let commentBtn = commentWindow.querySelector("button");
+  commentWindow.querySelector(".author").addEventListener("input", ()=>{
+    if(commentWindow.querySelector(".author").value !== ""){
+      if(commentWindow.querySelector(".comment-text").value !== ""){
+        commentBtn.disabled = false;
+      }
+    }
+  });
+//FIN TEST ACTIVATION BOUTON COMMENTAIRE
+
   detailsModal.querySelector('.add-comment').addEventListener('click', () => {
     addComment(ideaNumber);
   });
@@ -194,11 +206,16 @@ function deleteIdea(ideaNumber){
 
   let confirmBtn = document.createElement("button");
   confirmBtn.type="button";
-  confirmBtn.classList = "btn btn-primary";
+  confirmBtn.classList = "btn btn-primary btn-danger";
   confirmBtn.innerText = "Confirmer la suppression";
 
   let footer = detailsModal.querySelector(".modal-footer");
   let closeButton = detailsModal.querySelector(".close-modal");
+
+  footer.querySelector(".edit-btn").style.display="none";
+  footer.querySelector(".delete-btn").style.display="none";
+  footer.querySelector(".invisible").style.display="none";
+
 
   confirmBtn.addEventListener("click", () => {
     ideas.splice(ideaNumber,1);

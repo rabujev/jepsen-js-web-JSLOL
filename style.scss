@@ -11,6 +11,11 @@ body img {
    position: fixed;
    z-index: -1;
 }
+
+
+
+
+
 body {
   background-color: #1F1919;
   background-image: url("image/body-img.jpg");
@@ -48,14 +53,14 @@ body {
   position: absolute;
   top: 0.5rem;
   right: 4rem;
-
 }
 
 button {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #4582EC;
   cursor: pointer;
   border-radius: 1rem;
   color: #FFFFFF;
+  box-shadow: none;
 }
 
 .edit-btn {
@@ -72,9 +77,6 @@ button {
   width: 4rem;
 }
 
-#idea-detail-modal .delete-btn {
-  margin-right: 250px;
-}
 
 .modal-content {
   background-color: rgba(192, 192, 192, 1);
@@ -82,8 +84,10 @@ button {
 
 .modal-body {
   color: black;
-
+  display: flex;
+  flex-direction: column;
 }
+
 
 .modal-header {
   text-shadow: 0;
@@ -102,4 +106,26 @@ button {
   background-color: #E1DADA;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.comment-creation{
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.invisible{
+  width: 15rem;
+}
+
+.add-comment{
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
