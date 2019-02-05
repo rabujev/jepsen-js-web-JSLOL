@@ -1,3 +1,13 @@
+# Voici le projet d groupe JS-LOL pour conquérir le monde
+
+Help us conquer the world, Minus & Cortex style.
+We need your brilliant ideas, for that we made a site where you can put every idea you have
+Go check it out, and if you have a dark soul like us, you will like it a lot.
+The only barrier is your imagination, and we, at JS-LOL, know she is limitless.
+Good conquest of the hearth, and may the odds be not in your favor.
+
+**See below for technical questions**
+*We use a Becode template for this exercise that we have modified at our convenience*
 
 # Becode Template for JavaScript Exercises
 
