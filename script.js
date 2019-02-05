@@ -185,7 +185,7 @@ function editDetails(ideaNumber){
   let editBtn = document.createElement("button");
   editBtn.type="button";
   editBtn.classList = "btn btn-primary";
-  editBtn.innerText = "Modifier";
+  editBtn.innerText = "Edit";
 
   let footer = detailsModal.querySelector(".modal-footer");
   let closeButton = detailsModal.querySelector("#close-modal");
@@ -217,7 +217,7 @@ function deleteIdea(ideaNumber){
   let confirmBtn = document.createElement("button");
   confirmBtn.type="button";
   confirmBtn.classList = "btn btn-primary btn-danger";
-  confirmBtn.innerText = "Confirmer la suppression";
+  confirmBtn.innerText = "Confirm deletion";
 
   let footer = detailsModal.querySelector(".modal-footer");
   let closeButton = detailsModal.querySelector(".close-modal");
