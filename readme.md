@@ -1,18 +1,20 @@
 # Here is the project of the group JS-LOL to conquer the world
 
 Help us conquer the world, Minus & Cortex style.
-We need your brilliant ideas, for that we made a site where you can put every idea you have
+We need your brilliant ideas. To this end, we made a webpage where you can put every idea you have.
 Go check it out, and if you have a dark soul like us, you will like it a lot.
-The only barrier is your imagination, and we, at JS-LOL, know she is limitless.
-Good conquest of the hearth, and may the odds be not in your favor.
+The only barrier is your imagination, and we, at JS-LOL, know it is limitless.
+Good conquest of the earth, and may the odds be not in your favor.
 
 **See below for technical questions**  
-*We use a Becode template for this exercise that we have modified at our convenience*  
+*For this exercise we used a Becode template that we have modified at our convenience*  
 *What you see below is rather for the developer*  
 
 # JavaScript Idea manager  
 
 This is a simple webapp used to manage ideas to conquer the world  
+
+[Link to the app](https://rabujev.github.io/jepsen-js-web-JSLOL/)
 
 ## Usage guide
 
@@ -63,9 +65,8 @@ This template already integrate some libraries and tools:
 * [Markdown](https://www.npmjs.com/package/markdown): A library that is used to convert Markdon into Html  
 And other dependencies (like JQuery for Bootstrap) You can find them in the package.json.
 
-## Last word  
-This project, was our first group project, we are Junior web developer, so be tolerant, we did our best and we liked the result
-of it. Don't hesitate to feedback us, like that, we could know where we need to improve our skills.
-Enjoy it, and give us your evilest idea to conquer this world.
+## Last words  
+This project was our first group project. We are Junior Web Developer, so be tolerant. We did our best. Don't hesitate to give us feedback, so that we know where we need to improve our skills.
+Enjoy, and give us your evilest idea to conquer this world.
 
 From the mightiest JS-LOL
