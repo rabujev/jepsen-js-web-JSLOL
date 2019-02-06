@@ -1,4 +1,4 @@
-# Here is the project of the group JS-LOL to conquer the world
+# Here is the JS-LOL team's project to conquer the world
 
 Help us conquer the world, Minus & Cortex style.
 We need your brilliant ideas. To this end, we made a webpage where you can put every idea you have.
