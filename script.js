@@ -101,7 +101,7 @@ function loadDetails(ideaNumber){
 
   	// creation du div nom d'auteur dans le div commentaire
   	let author = document.createElement("div");
-  	author.innerText = idea.comments[i].author;
+  	author.innerText = idea.comments[i].author + ':';
     author.classList = "comment-author";
   	comment.appendChild(author);
 
@@ -148,6 +148,7 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
   ideaName.value = '';
   ideaDescription.value = '';
   detailedDescription.value = '';
+  creationModal.querySelector("#submit-idea").disabled = true;
   storeIdea(userIdea);
 
   window.location.reload();
