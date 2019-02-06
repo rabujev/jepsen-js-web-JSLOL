@@ -2,7 +2,7 @@
 // import some polyfill to ensure everything works OK
 import "babel-polyfill";
 
-const markdown = require('markdown').markdown;
+import {markdown} from 'markdown';
 
 //import JQuery
 import $ from "jquery";
