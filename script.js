@@ -85,14 +85,14 @@ function loadDetails(ideaNumber){
   	let author = document.createElement("div");
   	author.innerText = comment.author + ':';
     author.classList = "comment-author";
-  	commentDiv.appendChild(author);
 
   	// creation du div texte dans le div commentaire
   	let commentText = document.createElement("div");
   	commentText.innerHTML = markdown.toHTML(comment.text);
     commentText.classList = "comment-content";
-  	commentDiv.appendChild(commentText);
 
+    commentDiv.appendChild(author);
+  	commentDiv.appendChild(commentText);
     commentsNode.appendChild(commentDiv);
   }
 
@@ -126,8 +126,8 @@ creationModal.querySelector("#submit-idea").addEventListener('click', () => {
   ideaDescription.value = '';
   detailedDescription.value = '';
   creationModal.querySelector("#submit-idea").disabled = true;
-  storeIdea(userIdea);
 
+  storeIdea(userIdea);
   window.location.reload();
 });
 
@@ -144,7 +144,6 @@ function storeIdea(idea, ideaNumber) {
 
   localStorage.setItem('ideas', JSON.stringify(ideas));
 }
-
 
 /*---------------
  * Idea-edition
@@ -164,9 +163,6 @@ function editDetails(ideaNumber){
   editBtn.classList = "btn btn-primary";
   editBtn.innerText = "Edit";
 
-  let footer = detailsModal.querySelector(".modal-footer");
-  let closeButton = detailsModal.querySelector("#close-modal");
-
   editBtn.addEventListener("click", () => {
     let modif = {
       name: detailsModal.querySelector('.idea-name').value,
@@ -179,10 +175,9 @@ function editDetails(ideaNumber){
     window.location.reload();
   });
 
-  footer.insertBefore(editBtn, closeButton);
-
+  let closeButton = detailsModal.querySelector("#close-modal");
+  detailsModal.querySelector(".modal-footer").insertBefore(editBtn, closeButton);
 }
-
 
 /*---------------
  * Deleting idea
@@ -203,12 +198,10 @@ function deleteIdea(ideaNumber){
   });
 
   let footer = detailsModal.querySelector(".modal-footer");
-  let closeButton = footer.querySelector(".close-modal");
-
   footer.querySelector(".edit-btn").style.display = "none";
   footer.querySelector(".delete-btn").style.display = "none";
-  footer.querySelector(".invisible").style.display = "none";
 
+  let closeButton = footer.querySelector(".close-modal");
   footer.insertBefore(confirmBtn, closeButton);
 }
 
@@ -239,8 +232,8 @@ let ideaBtn = ideaWindow.querySelector("#submit-idea");
 
 function updateSubmitButtonState(){
   if(ideaWindow.querySelector(".idea-name").value === "" ||
-     ideaWindow.querySelector(".detailed-description").value === "" ||
-     ideaWindow.querySelector(".idea-description").value === "")
+     ideaWindow.querySelector(".idea-description").value === "" ||
+     ideaWindow.querySelector(".detailed-description").value === "")
   {
     ideaBtn.disabled = true;
   } else {
@@ -249,5 +242,5 @@ function updateSubmitButtonState(){
 }
 
 ideaWindow.querySelector(".idea-name").addEventListener("input", updateSubmitButtonState);
-ideaWindow.querySelector(".detailed-description").addEventListener("input", updateSubmitButtonState);
 ideaWindow.querySelector(".idea-description").addEventListener("input", updateSubmitButtonState);
+ideaWindow.querySelector(".detailed-description").addEventListener("input", updateSubmitButtonState);
